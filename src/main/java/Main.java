@@ -13,8 +13,8 @@ class App {
     public void run() {
 
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("== 명언 앱 ==");
+        int lastNo = 1;
 
         while (true) {
 
@@ -31,7 +31,8 @@ class App {
                 System.out.print("작가 : ");
                 String author = scanner.nextLine();
 
-                System.out.println("1번 명언이 등록되었습니다.");
+                System.out.println(lastNo + "번 명언이 등록되었습니다.");
+                lastNo++;
             }
 
         }
