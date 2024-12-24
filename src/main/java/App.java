@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 class App {
@@ -40,10 +39,34 @@ class App {
                     System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
                 } else {
                     System.out.println("%d 번 명언은 존재하지 않습니다.".formatted(id));
-
                 }
+            } else if(command.startsWith("수정?id=")) {
+                String strId = command.substring(6);
+                int id = Integer.parseInt(strId);
+
+                updateWiseSaying(id);
             }
         }
+    }
+
+    private WiseSaying findWiseSaying(int targetId) {
+        for (WiseSaying wiseSaying : wiseSayingList) {
+            if (wiseSaying.getId() == targetId) {
+                return wiseSaying;
+            }
+        }
+        return null; // 자바에서 null은 객체가 비어있음을 의미
+    }
+
+    private void updateWiseSaying(int targetId) {
+
+        WiseSaying wiseSaying = findWiseSaying(targetId);
+
+        if(wiseSaying == null) {
+            System.out.println("%d 번 명언은 존재하지 않습니다.".formatted(targetId));
+            return;
+        }
+
     }
 
     private boolean deleteWiseSaying(int targetId) {
