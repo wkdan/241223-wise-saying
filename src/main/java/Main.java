@@ -51,7 +51,6 @@ class App {
 
                 System.out.println("%d / %s / %s".formatted(wiseSaying.id, wiseSaying.author, wiseSaying.content));
 
-
             }
         }
     }
