@@ -17,14 +17,8 @@ class App {
     public void run() {
         Scanner scanner = new Scanner(System.in);
 
-
         // 테스트 명언 데이터1
-        WiseSaying wiseSayingTest = new WiseSaying();
-        wiseSayingTest.id = ++lastId;
-        wiseSayingTest.content = "꿈을 지녀라. 그러면 어려운 현실을 이길 수 있다.";
-        wiseSayingTest.author = "월트 디즈니";
-
-        wiseSayingList[wiseSayingSize++] = wiseSayingTest;
+        add("꿈을 지녀라. 그러면 어려운 현실을 이길 수 있다.","월트 디즈니");
 
         System.out.println("== 명언 앱 ==");
 
@@ -68,12 +62,7 @@ class App {
     //함수 이름은 동사가 좋음
     public void add(String content, String author) {
 
-        WiseSaying wiseSaying = new WiseSaying();
-
-        wiseSaying.id =  ++lastId;
-        wiseSaying.content = content;
-        wiseSaying.author = author;
-
+        WiseSaying wiseSaying = new WiseSaying(++lastId, content, author);
         wiseSayingList[wiseSayingSize++] = wiseSaying;
 
     }
@@ -83,4 +72,10 @@ class WiseSaying {
     int id;
     String content;
     String author;
+
+    WiseSaying(int id, String content, String author) {
+        this.id = id;
+        this.content = content;
+        this.author = author;
+    }
 }
