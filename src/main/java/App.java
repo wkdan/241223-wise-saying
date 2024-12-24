@@ -14,7 +14,7 @@ class App {
     public void run() {
         // 테스트 명언 데이터1
         add("꿈을 지녀라. 그러면 어려운 현실을 이길 수 있다.", "월트 디즈니");
-        add("현재를 사랑하라","작자 미상");
+        add("현재를 사랑하라", "작자 미상");
 
         System.out.println("== 명언 앱 ==");
 
@@ -34,21 +34,27 @@ class App {
                 String strId = command.substring(6);
                 int id = Integer.parseInt(strId);
 
-                deleteWiseSaying(id);
-                System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
+               boolean result = deleteWiseSaying(id);
+
+                if (result) {
+                    System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
+                } else {
+                    System.out.println("%d 번 명언은 존재하지 않습니다.".formatted(id));
+
+                }
             }
         }
     }
 
-    private void deleteWiseSaying(int targetId) {
-        for(WiseSaying wiseSaying : wiseSayingList ) {
+    private boolean deleteWiseSaying(int targetId) {
+
+        for (WiseSaying wiseSaying : wiseSayingList) {
             if (wiseSaying.getId() == targetId) {
                 wiseSayingList.remove(wiseSaying);
-
-                break;
+                return true;
             }
-
         }
+        return false;
     }
 
     private void printWiseSayingList() {
