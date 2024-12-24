@@ -31,18 +31,20 @@ class App {
             } else if (command.equals("목록")) {
                 printWiseSayingList(); // 구체적인 것을 일반화 -> 추상화 (함수 메서드 분리)
             } else if (command.startsWith("삭제?id=")) { // contains는 "문자열" 포함 시 true 반환,startsWith는 "문자열"로 시작시 true
-                deleteWiseSaying();
+                String strId = command.substring(6);
+                int id = Integer.parseInt(strId);
+
+                deleteWiseSaying(id);
+                System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
             }
         }
     }
 
-    private void deleteWiseSaying() {
-        System.out.println("삭제");
-        //방법 1. id가 1인 명언의 index를 얻는다.
-        //방법 2. id가 1인 명언의 값 자체를 얻는다.
+    private void deleteWiseSaying(int targetId) {
         for(WiseSaying wiseSaying : wiseSayingList ) {
-            if (wiseSaying.getId() == 1) {
+            if (wiseSaying.getId() == targetId) {
                 wiseSayingList.remove(wiseSaying);
+
                 break;
             }
 
