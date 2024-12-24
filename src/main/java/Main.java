@@ -36,8 +36,8 @@ class App {
 
                 map.put(lastNo, new String[]{author, wise});
 
-                System.out.println(lastNo + "번 명언이 등록되었습니다.");
-                lastNo++;
+                System.out.println("%d번 명언이 등록되었습니다.".formatted(lastNo++));
+
 
             } else if (command.equals("목록")) {
                 System.out.println("번호 / "+"작가 / "+"명언 / ");
