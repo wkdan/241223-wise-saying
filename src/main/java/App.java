@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class App {
@@ -5,13 +7,14 @@ class App {
     private int lastId = 0;
     private int wiseSayingSize = 0;
     // 변하지 않는 값들은 final 붙임
-    private final WiseSaying[] wiseSayingList = new WiseSaying[3];
+    private final ArrayList<WiseSaying> wiseSayingList = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
 
     public void run() {
         // 테스트 명언 데이터1
         add("꿈을 지녀라. 그러면 어려운 현실을 이길 수 있다.", "월트 디즈니");
+        add("현재를 사랑하라","작자 미상");
 
         System.out.println("== 명언 앱 ==");
 
@@ -23,13 +26,26 @@ class App {
             if (command.equals("종료")) {
                 System.out.println("명언 앱을 종료합니다.");
                 break;
-
             } else if (command.equals("등록")) {
                 writeWiseSaying();
-                
             } else if (command.equals("목록")) {
                 printWiseSayingList(); // 구체적인 것을 일반화 -> 추상화 (함수 메서드 분리)
+            } else if (command.startsWith("삭제?id=")) { // contains는 "문자열" 포함 시 true 반환,startsWith는 "문자열"로 시작시 true
+                deleteWiseSaying();
             }
+        }
+    }
+
+    private void deleteWiseSaying() {
+        System.out.println("삭제");
+        //방법 1. id가 1인 명언의 index를 얻는다.
+        //방법 2. id가 1인 명언의 값 자체를 얻는다.
+        for(WiseSaying wiseSaying : wiseSayingList ) {
+            if (wiseSaying.getId() == 1) {
+                wiseSayingList.remove(wiseSaying);
+                break;
+            }
+
         }
     }
 
@@ -37,8 +53,12 @@ class App {
         System.out.println("번호 / 작가 / 명언 /");
         System.out.println("----------------------");
 
-        for (int i = 0; i < wiseSayingSize; i++) {
-            WiseSaying wiseSaying = wiseSayingList[i];
+//        for (int i = 0; i < wiseSayingList.size(); i++) {
+//            WiseSaying wiseSaying = wiseSayingList.get(i);
+//            System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getAuthor(), wiseSaying.getContent()));
+//        }
+
+        for(WiseSaying wiseSaying : wiseSayingList.reversed()) { // 향상된 for문
             System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getAuthor(), wiseSaying.getContent()));
         }
     }
@@ -59,7 +79,7 @@ class App {
     public void add(String content, String author) {
 
         WiseSaying wiseSaying = new WiseSaying(++lastId, content, author);
-        wiseSayingList[wiseSayingSize++] = wiseSaying;
+        wiseSayingList.add(wiseSaying);
 
     }
 }
