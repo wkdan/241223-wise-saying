@@ -6,13 +6,12 @@ import java.util.Scanner;
 
 public class WiseSayingController {
 
-
     private final WiseSayingService wiseSayingService;
     private final Scanner scanner;
 
     public WiseSayingController(Scanner scanner) {
         this.scanner = scanner;
-        this.wiseSayingService = new WiseSayingService();
+        this.wiseSayingService = new WiseSayingService(new WiseSayingRepository());
     }
 
     public void updateWiseSaying(int targetId) {
