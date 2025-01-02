@@ -66,6 +66,18 @@ class App {
             System.out.println("%d 번 명언은 존재하지 않습니다.".formatted(targetId));
             return;
         }
+        System.out.println("명언(기존) : %s".formatted(wiseSaying.getContent()));
+        System.out.println("명언 : ");
+        String newContent = scanner.nextLine();
+        System.out.println("명언(작가) : %s".formatted(wiseSaying.getAuthor()));
+        System.out.println("작가 : ");
+        String newAuthor = scanner.nextLine();
+
+        wiseSaying.setContent(newContent);
+        wiseSaying.setAuthor(newAuthor);
+
+        System.out.println("%d번 명언이 수정되었습니다.".formatted(wiseSaying.getId()));
+
 
     }
 
