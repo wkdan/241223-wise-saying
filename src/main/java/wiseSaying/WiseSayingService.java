@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class WiseSayingService {
     private final WiseSayingRepository wiseSayingRepository;
 
-    public WiseSayingService(WiseSayingRepository wiseSayingRepository) {
-        this.wiseSayingRepository = wiseSayingRepository;
+    public WiseSayingService(WiseSayingRepository wiseSayingMemRepository) {
+        this.wiseSayingRepository = wiseSayingMemRepository;
     }
 
     public WiseSaying findById(int targetId) {
