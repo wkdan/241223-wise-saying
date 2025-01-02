@@ -1,3 +1,5 @@
+import wiseSaying.WiseSaying;
+
 import java.util.ArrayList;
 
 public class test {
